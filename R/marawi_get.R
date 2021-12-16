@@ -7,9 +7,11 @@
 #' the Open Marawi Google Drive database and list files and folders within.
 #'
 #' @param id Character vector of the Open Marawi **Google Drive** id. This is
-#'   currently set to *1bph1LBRpxwydAvjuggyjmhmq6HhyteY8*
+#'   currently set to *1bph1LBRpxwydAvjuggyjmhmq6HhyteY8* which is the id of
+#'   the Open Marawi **Google Drive**. Change this if Open Marawi
+#'   **Google Drive** is moved.
 #'
-#' @return A tibble of names and ids of files and folders within the the
+#' @return A dribble of names and ids of files and folders within the the
 #'   Open Marawi Google Drive
 #'
 #' @author Ernest Guevarra
@@ -27,9 +29,10 @@ marawi_ls <- function(id = "1bph1LBRpxwydAvjuggyjmhmq6HhyteY8") {
   ## Google Drive deauthorisation
   googledrive::drive_deauth()
 
-  ## List files and folders inside OpenBangsa
+  ## Get dribble of files and folders inside Open Marawi Google Drive
   x <- googledrive::drive_ls(googledrive::drive_get(id = id))
 
   ## Return x
   x
 }
+

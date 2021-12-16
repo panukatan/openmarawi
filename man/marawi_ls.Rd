@@ -8,10 +8,12 @@ marawi_ls(id = "1bph1LBRpxwydAvjuggyjmhmq6HhyteY8")
 }
 \arguments{
 \item{id}{Character vector of the Open Marawi \strong{Google Drive} id. This is
-currently set to \emph{1bph1LBRpxwydAvjuggyjmhmq6HhyteY8}}
+currently set to \emph{1bph1LBRpxwydAvjuggyjmhmq6HhyteY8} which is the id of
+the Open Marawi \strong{Google Drive}. Change this if Open Marawi
+\strong{Google Drive} is moved.}
 }
 \value{
-A tibble of names and ids of files and folders within the the
+A dribble of names and ids of files and folders within the the
 Open Marawi Google Drive
 }
 \description{
