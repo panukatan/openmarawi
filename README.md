@@ -10,6 +10,7 @@ has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/panukatan/openmarawi/workflows/R-CMD-check/badge.svg)](https://github.com/panukatan/openmarawi/actions)
 <!-- badges: end -->
 
 The citizens of Marawi have a right to the data and maps about their
