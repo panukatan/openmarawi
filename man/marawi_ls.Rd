@@ -2,28 +2,41 @@
 % Please edit documentation in R/marawi_get.R
 \name{marawi_ls}
 \alias{marawi_ls}
+\alias{marawi_ls_armm}
 \title{List files and folders within the Open Marawi Google Drive database}
 \usage{
 marawi_ls(id = "1bph1LBRpxwydAvjuggyjmhmq6HhyteY8")
+
+marawi_ls_armm(id = marawi_ls()$id[marawi_ls()$name == "ARMM"])
 }
 \arguments{
-\item{id}{Character vector of the Open Marawi \strong{Google Drive} id. This is
-currently set to \emph{1bph1LBRpxwydAvjuggyjmhmq6HhyteY8} which is the id of
-the Open Marawi \strong{Google Drive}. Change this if Open Marawi
-\strong{Google Drive} is moved.}
+\item{id}{Character vector of the ARMM directory in the Open Marawi
+\strong{Google Drive} id. This can be retrieved from the listing provided by
+\code{marawi_ls}.}
 }
 \value{
 A dribble of names and ids of files and folders within the the
 Open Marawi Google Drive
+
+A dribble of names and ids of files and folders within the the
+ARMM directory in the Open Marawi Google Drive
 }
 \description{
 A convenience wrapper to \link{googledrive} functions set to specifically access
 the Open Marawi Google Drive database and list files and folders within.
+
+A convenience wrapper to \link{googledrive} functions set to specifically access
+the ARMM directory in the Open Marawi Google Drive database and list files
+and folders within.
 }
 \examples{
 marawi_ls()
 
+marawi_ls_armm()
+
 }
 \author{
+Ernest Guevarra
+
 Ernest Guevarra
 }

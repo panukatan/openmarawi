@@ -18,7 +18,8 @@ Description: The citizens of Marawi have a right to the data and maps about
 License: GPL (>= 3)
 Imports: 
     googledrive,
-    googlesheets4
+    googlesheets4,
+    readxl
 Suggests: 
     spelling
 Encoding: UTF-8
@@ -28,4 +29,3 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 URL: https://panukatan.io/openmarawi/, https://github.com/panukatan/openmarawi
 BugReports: https://github.com/panukatan/openmarawi/issues
-

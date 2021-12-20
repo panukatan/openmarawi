@@ -17,6 +17,7 @@
 #' @keywords internal
 #' @importFrom googledrive drive_deauth drive_ls drive_get
 #' @importFrom googlesheets4 gs4_deauth read_sheet
+#' @importFrom readxl read_xls
 #'
 #
 ################################################################################
