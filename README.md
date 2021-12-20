@@ -11,6 +11,8 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/panukatan/openmarawi/workflows/R-CMD-check/badge.svg)](https://github.com/panukatan/openmarawi/actions)
+[![test-coverage](https://github.com/panukatan/openmarawi/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/panukatan/openmarawi/actions/workflows/test-coverage.yaml)
+[![CodeFactor](https://www.codefactor.io/repository/github/panukatan/openmarawi/badge)](https://www.codefactor.io/repository/github/panukatan/openmarawi)
 <!-- badges: end -->
 
 The citizens of Marawi have a right to the data and maps about their
