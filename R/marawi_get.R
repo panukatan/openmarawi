@@ -30,7 +30,7 @@ marawi_ls <- function(id = "1bph1LBRpxwydAvjuggyjmhmq6HhyteY8") {
   googledrive::drive_deauth()
 
   ## Get dribble of files and folders inside Open Marawi Google Drive
-  x <- googledrive::drive_get(id = id) |>
+  x <- googledrive::drive_get(id = id) %>%
     googledrive::drive_ls()
 
   ## Return x
@@ -71,7 +71,7 @@ marawi_ls_armm <- function(id = marawi_ls()$id[marawi_ls()$name == "ARMM"]) {
   googledrive::drive_deauth()
 
   ## Get dribble of files and folders inside Open Marawi Google Drive
-  x <- googledrive::drive_get(id = id) |>
+  x <- googledrive::drive_get(id = id) %>%
     googledrive::drive_ls()
 
   ## Return x
