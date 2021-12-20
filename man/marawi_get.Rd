@@ -2,6 +2,7 @@
 % Please edit documentation in R/marawi_get.R
 \name{marawi_get_armm}
 \alias{marawi_get_armm}
+\alias{marawi_get_armm_all}
 \title{Get ARMM Barangay level data masterlist from the Open Marawi Google Drive
 Database}
 \usage{
@@ -9,6 +10,11 @@ marawi_get_armm(
   id = marawi_ls_armm()$id[stringi::stri_detect(marawi_ls_armm()$name, fixed =
     "Masterlist")],
   dataset = c("metadata", "demographics", "facilities", "conflict")
+)
+
+marawi_get_armm_all(
+  id = marawi_ls_armm()$id[stringi::stri_detect(marawi_ls_armm()$name, fixed =
+    "Masterlist")]
 )
 }
 \arguments{
@@ -34,6 +40,8 @@ Database
 ## Retrieve the metadata dataset of the ARMM directory in the Open Marawi
 ## database
 marawi_get_armm(dataset = "metadata")
+
+marawi_get_armm_all()
 
 }
 \author{

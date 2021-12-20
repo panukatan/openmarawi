@@ -40,22 +40,6 @@ marawi_ls <- function(id = "1bph1LBRpxwydAvjuggyjmhmq6HhyteY8") {
 ################################################################################
 #
 #'
-#' List files and folders within the ARMM directory in the Open Marawi Google
-#' Drive database
-#'
-#' A convenience wrapper to [googledrive] functions set to specifically access
-#' the ARMM directory in the Open Marawi Google Drive database and list files
-#' and folders within.
-#'
-#' @param id Character vector of the ARMM directory in the Open Marawi
-#'   **Google Drive** id. This can be retrieved from the listing provided by
-#'   `marawi_ls`.
-#'
-#' @return A dribble of names and ids of files and folders within the the
-#'   ARMM directory in the Open Marawi Google Drive
-#'
-#' @author Ernest Guevarra
-#'
 #' @examples
 #' marawi_ls_armm()
 #'
@@ -137,4 +121,43 @@ marawi_get_armm <- function(id = marawi_ls_armm()$id[stringi::stri_detect(marawi
 
   ## Return x
   x
+}
+
+
+################################################################################
+#
+#'
+#' @examples
+#' marawi_get_armm_all()
+#'
+#' @rdname marawi_get
+#' @export
+#'
+#
+################################################################################
+
+marawi_get_armm_all <- function(id = marawi_ls_armm()$id[stringi::stri_detect(marawi_ls_armm()$name, fixed = "Masterlist")]) {
+  ## Google Drive deauthorisation
+  googledrive::drive_deauth()
+
+  ## Create temp file
+  downloaded_file <- tempfile()
+
+  ## Download masterlist file
+  googledrive::drive_download(file = id, path = downloaded_file)
+
+  ## Read demographics
+  x <- readxl::read_xls(path = downloaded_file, sheet = "demographics")
+
+  ## Read facilities
+  y <- readxl::read_xls(path = downloaded_file, sheet = "bgyfacilities")
+
+  ## Read conflict
+  z <- readxl::read_xls(path = downloaded_file, sheet = "conflict")
+
+  ## Merge
+  xyz <- merge(merge(x, y), z)
+
+  ## Return xyz
+  xyz
 }
