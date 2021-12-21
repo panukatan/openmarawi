@@ -3,6 +3,8 @@
 \name{marawi_get_armm}
 \alias{marawi_get_armm}
 \alias{marawi_get_armm_all}
+\alias{marawi_get_lanao}
+\alias{marawi_get_lanao_all}
 \title{Get ARMM Barangay level data masterlist from the Open Marawi Google Drive
 Database}
 \usage{
@@ -16,25 +18,44 @@ marawi_get_armm_all(
   id = marawi_ls_armm()$id[stringi::stri_detect(marawi_ls_armm()$name, fixed =
     "Masterlist")]
 )
+
+marawi_get_lanao(
+  id = marawi_ls_lanao()$id[stringi::stri_detect(marawi_ls_lanao()$name, fixed =
+    "Masterlist_bgy")],
+  dataset = c("metadata", "demographics", "facilities", "establishment",
+    "mode_transport", "conflict", "private_schools", "health")
+)
+
+marawi_get_lanao_all(
+  id = marawi_ls_lanao()$id[stringi::stri_detect(marawi_ls_lanao()$name, fixed =
+    "Masterlist_bgy")]
+)
 }
 \arguments{
-\item{id}{Character value for the unique identifier for the ARMM Open Marawi
-\strong{Google Drive} Masterlist file in \strong{.xlsx} format. Currently set
+\item{id}{Character value for the unique identifier for the Lanao del Sur
+Open Marawi \strong{Google Drive} Masterlist file in \strong{.xlsx} format. Currently set
 to the identifier specified when \code{marawi_ls_armm()} is called. Change this
 if Open Marawi \strong{Google Drive} is moved or if name of masterlist file
 changes.}
 
 \item{dataset}{A string value from either \code{metadata}, \code{demographics},
-\code{facilities}, or \code{conflict} specifying the masterlist data to retrieve. If
-not specified, will default to \code{metadata}}
+\code{facilities}, \code{establishment}, \code{mode_transport}, \code{conflict},
+\code{private_schools}, or \code{health} specifying the masterlist data to retrieve.
+If not specified, will default to \code{metadata}}
 }
 \value{
 A tibble of the specified masterlist dataset available in the
 ARMM directory of the Open Marawi Database.
+
+A tibble of the specified masterlist dataset available in the
+Lanao del Sur directory of the Open Marawi Database.
 }
 \description{
 Get ARMM Barangay level data masterlist from the Open Marawi Google Drive
 Database
+
+Get Lanao del Sur Barangay level data masterlist from the Open Marawi Google
+Drive Database
 }
 \examples{
 ## Retrieve the metadata dataset of the ARMM directory in the Open Marawi
@@ -43,7 +64,15 @@ marawi_get_armm(dataset = "metadata")
 
 marawi_get_armm_all()
 
+## Retrieve the metadata dataset of the Lanao del Sur directory in the Open
+## Marawi database
+marawi_get_lanao(dataset = "metadata")
+
+marawi_get_lanao_all()
+
 }
 \author{
+Ernest Guevarra
+
 Ernest Guevarra
 }

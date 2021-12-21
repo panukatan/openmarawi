@@ -2,8 +2,11 @@
 
 export(marawi_get_armm)
 export(marawi_get_armm_all)
+export(marawi_get_lanao)
+export(marawi_get_lanao_all)
 export(marawi_ls)
 export(marawi_ls_armm)
+export(marawi_ls_lanao)
 importFrom(googledrive,drive_deauth)
 importFrom(googledrive,drive_get)
 importFrom(googledrive,drive_ls)

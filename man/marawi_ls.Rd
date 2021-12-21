@@ -3,11 +3,14 @@
 \name{marawi_ls}
 \alias{marawi_ls}
 \alias{marawi_ls_armm}
+\alias{marawi_ls_lanao}
 \title{List files and folders within the Open Marawi Google Drive database}
 \usage{
 marawi_ls(id = "1bph1LBRpxwydAvjuggyjmhmq6HhyteY8")
 
 marawi_ls_armm(id = marawi_ls()$id[marawi_ls()$name == "ARMM"])
+
+marawi_ls_lanao(id = marawi_ls()$id[marawi_ls()$name == "Lanao del Sur"])
 }
 \arguments{
 \item{id}{Character vector of the Open Marawi \strong{Google Drive} id. This is
@@ -27,6 +30,8 @@ the Open Marawi Google Drive database and list files and folders within.
 marawi_ls()
 
 marawi_ls_armm()
+
+marawi_ls_lanao()
 
 }
 \author{
