@@ -73,6 +73,4 @@ marawi_get_lanao_all()
 }
 \author{
 Ernest Guevarra
-
-Ernest Guevarra
 }

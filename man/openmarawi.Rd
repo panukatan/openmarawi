@@ -2,8 +2,8 @@
 % Please edit documentation in R/openmarawi.R
 \docType{package}
 \name{openmarawi}
-\alias{openmarawi}
 \alias{openmarawi-package}
+\alias{openmarawi}
 \title{An Interface to the Open Marawi Database}
 \description{
 The citizens of Marawi have a right to the data and maps about their home
