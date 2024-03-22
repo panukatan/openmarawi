@@ -10,7 +10,7 @@ has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![R-CMD-check](https://github.com/panukatan/openmarawi/workflows/R-CMD-check/badge.svg)](https://github.com/panukatan/openmarawi/actions)
+[![R-CMD-check](https://github.com/panukatan/openmarawi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/panukatan/openmarawi/actions/workflows/R-CMD-check.yaml)
 [![test-coverage](https://github.com/panukatan/openmarawi/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/panukatan/openmarawi/actions/workflows/test-coverage.yaml)
 [![CodeFactor](https://www.codefactor.io/repository/github/panukatan/openmarawi/badge)](https://www.codefactor.io/repository/github/panukatan/openmarawi)
 <!-- badges: end -->
@@ -30,8 +30,7 @@ of Marawi City.
 
 <!---
 You can install the released version of openmarawi from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
+&#10;``` r
 install.packages("openmarawi")
 ```
 --->
