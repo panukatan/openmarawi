@@ -28,7 +28,13 @@
     <loc>https://panukatan.io/openmarawi/reference/marawi_get_lanao.html</loc>
   </url>
   <url>
+    <loc>https://panukatan.io/openmarawi/reference/marawi_get_marawi.html</loc>
+  </url>
+  <url>
     <loc>https://panukatan.io/openmarawi/reference/marawi_ls.html</loc>
+  </url>
+  <url>
+    <loc>https://panukatan.io/openmarawi/reference/marawi_maps_ls.html</loc>
   </url>
   <url>
     <loc>https://panukatan.io/openmarawi/reference/marawi_utils.html</loc>
