@@ -14,7 +14,7 @@ Database"><meta property="og:image" content="https://panukatan.io/openmarawi/log
     
     <a class="navbar-brand me-2" href="../index.html">openmarawi</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,31 +109,7 @@ available in the ARMM directory of the Open Marawi Database.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ abbreviated name: ¹​`Broad Variable Categories`</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 4 more variables: `Data entry` &lt;chr&gt;, `Sheet name` &lt;chr&gt;, Remarks &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `Data source` &lt;chr&gt;</span></span>
-<span class="r-in"><span><span class="fu">marawi_get_armm_all</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Joining with `by = join_by(PSGC_prov, Province, PSGC_mun, Municipality,</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> PSGC_bgy, Barangay)`</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Joining with `by = join_by(PSGC_prov, Province, PSGC_mun, Municipality,</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> PSGC_bgy, Barangay)`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2,490 × 95</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    PSGC_prov Province PSGC_mun  Municipality   PSGC_bgy Barangay Population_2015</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 150700000 BASILAN  150702000 CITY OF LAMIT… 1507020… Arco                 672</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 150700000 BASILAN  150702000 CITY OF LAMIT… 1507020… Ba-as               <span style="text-decoration: underline;">1</span>255</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 150700000 BASILAN  150702000 CITY OF LAMIT… 1507020… Baimbing             500</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 150700000 BASILAN  150702000 CITY OF LAMIT… 1507020… Balagta…            <span style="text-decoration: underline;">2</span>359</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 150700000 BASILAN  150702000 CITY OF LAMIT… 1507020… Balas               <span style="text-decoration: underline;">2</span>918</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 150700000 BASILAN  150702000 CITY OF LAMIT… 1507020… Balobo              <span style="text-decoration: underline;">2</span>017</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 150700000 BASILAN  150702000 CITY OF LAMIT… 1507020… Bato                <span style="text-decoration: underline;">4</span>279</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 150700000 BASILAN  150702000 CITY OF LAMIT… 1507020… Boheyak…             779</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 150700000 BASILAN  150702000 CITY OF LAMIT… 1507020… Buahan              <span style="text-decoration: underline;">1</span>303</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 150700000 BASILAN  150702000 CITY OF LAMIT… 1507020… Boheibu             <span style="text-decoration: underline;">1</span>298</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2,480 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 88 more variables: Population_2010 &lt;dbl&gt;, `Urban/Rural\n2000 CPH` &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   mean_hhh_age &lt;dbl&gt;, prophh_memdiffrelgn_frhh &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   prophh_memdiffeth_frhh &lt;dbl&gt;, prophh_memdiffwlkclmb &lt;dbl&gt;, age0002 &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   popn_age0006 &lt;dbl&gt;, ageg0612 &lt;dbl&gt;, age1318 &lt;dbl&gt;, age18more &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   popn_age60more &lt;dbl&gt;, age15to60_fem_num &lt;dbl&gt;, age15to60_male_num &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   male_hsgrad_15to60 &lt;dbl&gt;, female_hsgrad_15to60 &lt;dbl&gt;, …</span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="fu">marawi_get_armm_all</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
