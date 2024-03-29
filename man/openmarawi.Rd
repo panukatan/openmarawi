@@ -20,7 +20,6 @@ Useful links:
 \itemize{
   \item \url{https://panukatan.io/openmarawi/}
   \item \url{https://github.com/panukatan/openmarawi}
-  \item \url{http://panukatan.io/openmarawi/}
   \item Report bugs at \url{https://github.com/panukatan/openmarawi/issues}
 }
 

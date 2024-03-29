@@ -64,7 +64,7 @@ marawi_ls_lanao <- function(drive_list) {
   ## Google Drive deauthorisation ----
   googledrive::drive_deauth()
 
-  ## Get Google Drive identifier for ARMM ----
+  ## Get Google Drive identifier for Lanao del Sure ----
   drive_id <- get_drive_id(pattern = "Lanao del Sur", drive_list = drive_list)
 
   ## Get dribble of files and folders inside Open Marawi Google Drive ----
@@ -75,4 +75,24 @@ marawi_ls_lanao <- function(drive_list) {
   drive_list
 }
 
+
+#'
+#' @rdname marawi_ls
+#' @export
+#'
+marawi_ls_marawi <- function(drive_list) {
+  ## Google Drive deauthorisation ----
+  googledrive::drive_deauth()
+
+  ## Get Google Drive identifier for Marawi ----
+  drive_id <- get_drive_id(pattern = "Marawi", drive_list = drive_list) |>
+    (\(x) x[1])()
+
+  ## Get dribble of files and folders inside Open Marawi Google Drive ----
+  drive_list <- googledrive::as_id(drive_id) |>
+    googledrive::drive_ls()
+
+  ## Return drive_list ----
+  drive_list
+}
 

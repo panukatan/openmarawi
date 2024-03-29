@@ -1,4 +1,4 @@
-title: panukatan
+title: openmarawi
 
 url: https://panukatan.io/openmarawi/
 
@@ -46,10 +46,15 @@ reference:
     contents:
     - marawi_ls
 
-  - title: Get drive data
+  - title: Get tabular data
     contents:
     - marawi_get_armm
     - marawi_get_lanao
+    - marawi_get_marawi
+
+  - title: Get maps data
+    contents:
+    - marawi_maps_get
 
   - title: Utilities
     contents:

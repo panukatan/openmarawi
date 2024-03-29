@@ -13,9 +13,9 @@ marawi_get_armm(
 marawi_get_armm_all(tabular = TRUE)
 }
 \arguments{
-\item{dataset}{A string value from either \code{metadata}, \code{demographics},
-\code{bgyfacilities}, or \code{conflict} specifying the masterlist data to retrieve.
-If not specified, will default to \code{metadata}.}
+\item{dataset}{A string value from either \emph{"metadata"}, \emph{"demographics"},
+\emph{"bgyfacilities"}, or \emph{"conflict"} specifying the masterlist data to
+retrieve. If not specified, will default to \emph{"metadata"}.}
 
 \item{tabular}{Logical. Should output be flattened into a single data.frame?
 Default is TRUE. If FALSE, output is a list of data.frames for each

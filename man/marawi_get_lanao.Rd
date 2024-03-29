@@ -14,10 +14,10 @@ marawi_get_lanao(
 marawi_get_lanao_all(tabular = TRUE)
 }
 \arguments{
-\item{dataset}{A string value from either \code{metadata}, \code{demographics},
-\code{facilities}, \code{establishment}, \code{mode_transport}, \code{conflict},
-\code{private_schools}, or \code{health} specifying the masterlist data to retrieve.
-If not specified, will default to \code{metadata}.}
+\item{dataset}{A string value from either \emph{"metadata"}, \emph{"demographics"},
+\emph{"facilities"}, \emph{"establishment"}, \emph{"mode_transport"}, \emph{"conflict"},
+\emph{"private_schools"}, or \emph{"health"} specifying the masterlist data to
+retrieve. If not specified, will default to \emph{"metadata"}.}
 
 \item{tabular}{Logical. Should output be flattened into a single data.frame?
 Default is TRUE. If FALSE, output is a list of data.frames for each
