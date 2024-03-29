@@ -21,6 +21,8 @@ Open Marawi \strong{Google Drive}.
 List Marawi maps
 }
 \examples{
-marawi_maps_ls()
+\dontrun{
+  marawi_maps_ls()
+}
 
 }

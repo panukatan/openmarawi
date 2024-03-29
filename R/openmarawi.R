@@ -14,9 +14,11 @@
 #' @docType package
 #' @keywords internal
 #' @importFrom googledrive drive_deauth drive_ls as_id is_dribble as_dribble
-#' @importFrom dplyr filter pull slice
-#' @importFrom readxl read_xls
+#'   is_native with_drive_quiet
+#' @importFrom dplyr filter pull slice starts_with mutate
+#' @importFrom readxl read_xls read_xlsx excel_sheets
 #' @importFrom stringr str_detect
 #' @importFrom rlang .data
+#' @importFrom sf st_read
 #'
 "_PACKAGE"

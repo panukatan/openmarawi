@@ -18,7 +18,7 @@
 #' ## Retrieve the metadata dataset of the ARMM directory in the Open Marawi
 #' ## database
 #' marawi_get_armm(dataset = "metadata")
-#' marawi_get_armm_all()
+#' \dontrun{marawi_get_armm_all()}
 #'
 #' @rdname marawi_get_armm
 #' @export
@@ -113,7 +113,7 @@ marawi_get_armm_all <- function(tabular = TRUE) {
 #' ## Retrieve the metadata dataset of the Lanao del Sur directory in the Open
 #' ## Marawi database
 #' marawi_get_lanao(dataset = "metadata")
-#' marawi_get_lanao_all()
+#' \dontrun{marawi_get_lanao_all()}
 #'
 #' @rdname marawi_get_lanao
 #' @export
@@ -228,7 +228,7 @@ marawi_get_lanao_all <- function(tabular = TRUE) {
 #' ## Retrieve the metadata dataset of the Lanao del Sur directory in the Open
 #' ## Marawi database
 #' marawi_get_marawi(dataset = "metadata")
-#' marawi_get_marawi_all()
+#' \dontrun{marawi_get_marawi_all()}
 #'
 #' @rdname marawi_get_marawi
 #' @export

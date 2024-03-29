@@ -21,6 +21,7 @@ Imports:
     googledrive,
     readxl,
     rlang,
+    sf,
     stringr
 Suggests: 
     spelling
@@ -31,3 +32,5 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 URL: https://panukatan.io/openmarawi/, https://github.com/panukatan/openmarawi
 BugReports: https://github.com/panukatan/openmarawi/issues
+Depends: 
+    R (>= 2.10)

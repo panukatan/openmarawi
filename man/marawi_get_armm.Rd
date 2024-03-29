@@ -33,7 +33,7 @@ Database
 ## Retrieve the metadata dataset of the ARMM directory in the Open Marawi
 ## database
 marawi_get_armm(dataset = "metadata")
-marawi_get_armm_all()
+\dontrun{marawi_get_armm_all()}
 
 }
 \author{

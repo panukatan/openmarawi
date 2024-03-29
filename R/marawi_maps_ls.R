@@ -11,7 +11,9 @@
 #'   Open Marawi **Google Drive**.
 #'
 #' @examples
-#' marawi_maps_ls()
+#' \dontrun{
+#'   marawi_maps_ls()
+#' }
 #'
 #' @rdname marawi_maps_ls
 #' @export
@@ -81,10 +83,7 @@ marawi_maps_ls <- function(id = "1Fj5sK2tKo0_v8EnEbN8m1pMfaSFADmYL") {
           paste(collapse = "|")
       )
     ) |>
-    dplyr::select(
-      .data$dsn, .data$layer, .data$name, .data$id, .data$drive_resource
-    ) |>
-    googledrive::as_dribble()
+    dplyr::select(.data$dsn, .data$layer, .data$name, .data$id)
 
   ## Return df ----
   df
