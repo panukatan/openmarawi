@@ -1,107 +1,16 @@
-################################################################################
-#
-#'
-#' List files and folders within the Open Marawi Google Drive database
-#'
-#' A convenience wrapper to [googledrive] functions set to specifically access
-#' the Open Marawi Google Drive database and list files and folders within.
-#'
-#' @param id Character vector of the Open Marawi **Google Drive** id. This is
-#'   currently set to *1bph1LBRpxwydAvjuggyjmhmq6HhyteY8* which is the id of
-#'   the Open Marawi **Google Drive**. Change this if Open Marawi
-#'   **Google Drive** is moved.
-#'
-#' @return A dribble of names and ids of files and folders within the the
-#'   Open Marawi Google Drive
-#'
-#' @author Ernest Guevarra
-#'
-#' @examples
-#' marawi_ls()
-#'
-#' @rdname marawi_ls
-#' @export
-#'
-#
-################################################################################
-
-marawi_ls <- function(id = "1bph1LBRpxwydAvjuggyjmhmq6HhyteY8") {
-  ## Google Drive deauthorisation
-  googledrive::drive_deauth()
-
-  ## Get dribble of files and folders inside Open Marawi Google Drive
-  x <- googledrive::drive_ls(googledrive::drive_get(id = id))
-
-  ## Return x
-  x
-}
-
-
-################################################################################
-#
-#'
-#' @examples
-#' marawi_ls_armm()
-#'
-#' @rdname marawi_ls
-#' @export
-#'
-#
-################################################################################
-
-marawi_ls_armm <- function(id = marawi_ls()$id[marawi_ls()$name == "ARMM"]) {
-  ## Google Drive deauthorisation
-  googledrive::drive_deauth()
-
-  ## Get dribble of files and folders inside Open Marawi Google Drive
-  x <- googledrive::drive_ls(googledrive::drive_get(id = id))
-
-  ## Return x
-  x
-}
-
-
-################################################################################
-#
-#'
-#' @examples
-#' marawi_ls_lanao()
-#'
-#' @rdname marawi_ls
-#' @export
-#'
-#
-################################################################################
-
-marawi_ls_lanao <- function(id = marawi_ls()$id[marawi_ls()$name == "Lanao del Sur"]) {
-  ## Google Drive deauthorisation
-  googledrive::drive_deauth()
-
-  ## Get dribble of files and folders inside Open Marawi Google Drive
-  x <- googledrive::drive_ls(googledrive::drive_get(id = id))
-
-  ## Return x
-  x
-}
-
-
-################################################################################
-#
 #'
 #' Get ARMM Barangay level data masterlist from the Open Marawi Google Drive
 #' Database
 #'
-#' @param id Character value for the unique identifier for the ARMM Open Marawi
-#'   **Google Drive** Masterlist file in **.xlsx** format. Currently set
-#'   to the identifier specified when `marawi_ls_armm()` is called. Change this
-#'   if Open Marawi **Google Drive** is moved or if name of masterlist file
-#'   changes.
 #' @param dataset A string value from either `metadata`, `demographics`,
-#'   `facilities`, or `conflict` specifying the masterlist data to retrieve. If
-#'   not specified, will default to `metadata`
+#'   `bgyfacilities`, or `conflict` specifying the masterlist data to retrieve.
+#'   If not specified, will default to `metadata`.
+#' @param tabular Logical. Should output be flattened into a single data.frame?
+#'   Default is TRUE. If FALSE, output is a list of data.frames for each
+#'   sheet in the masterlist Excel file.
 #'
-#' @return A tibble of the specified masterlist dataset available in the
-#'   ARMM directory of the Open Marawi Database.
+#' @return A tibble or a list of tibbles of the specified masterlist dataset
+#'   available in the ARMM directory of the Open Marawi Database.
 #'
 #' @author Ernest Guevarra
 #'
@@ -109,102 +18,94 @@ marawi_ls_lanao <- function(id = marawi_ls()$id[marawi_ls()$name == "Lanao del S
 #' ## Retrieve the metadata dataset of the ARMM directory in the Open Marawi
 #' ## database
 #' marawi_get_armm(dataset = "metadata")
-#'
-#' @rdname marawi_get
-#' @export
-#'
-#'
-#
-################################################################################
-
-marawi_get_armm <- function(id = marawi_ls_armm()$id[stringi::stri_detect(marawi_ls_armm()$name, fixed = "Masterlist")],
-                            dataset = c("metadata", "demographics",
-                                        "facilities", "conflict")) {
-  ## Google Drive deauthorisation
-  googledrive::drive_deauth()
-
-  ## Create temp file
-  downloaded_file <- tempfile()
-
-  ## Download masterlist file
-  googledrive::drive_download(file = id, path = downloaded_file)
-
-  ## Define dataset argument
-  dataset <- match.arg(dataset)
-
-  sheet <- switch(
-    EXPR = dataset,
-    metadata = 1,
-    demographics = 2,
-    facilities = 3,
-    conflict = 4
-  )
-
-  ## Read the specified inventory
-  x <- readxl::read_xls(path = downloaded_file, sheet = sheet)
-
-  ## Return x
-  x
-}
-
-
-################################################################################
-#
-#'
-#' @examples
 #' marawi_get_armm_all()
 #'
-#' @rdname marawi_get
+#' @rdname marawi_get_armm
 #' @export
 #'
-#
-################################################################################
-
-marawi_get_armm_all <- function(id = marawi_ls_armm()$id[stringi::stri_detect(marawi_ls_armm()$name, fixed = "Masterlist")]) {
-  ## Google Drive deauthorisation
+#'
+marawi_get_armm <- function(dataset = c("metadata", "demographics",
+                                        "bgyfacilities", "conflict")) {
+  ## Google Drive deauthorisation ----
   googledrive::drive_deauth()
 
-  ## Create temp file
+  ## Get ARMM Google Drive identifier ----
+  id <- get_drive_id(
+    pattern = "Masterlist",
+    drive_list = marawi_ls() |> marawi_ls_armm()
+  )
+
+  ## Create temp file ----
   downloaded_file <- tempfile()
 
   ## Download masterlist file
-  googledrive::drive_download(file = id, path = downloaded_file)
+  googledrive::drive_download(file = id, path = downloaded_file) |>
+    googledrive::with_drive_quiet()
 
-  ## Read demographics
-  x <- readxl::read_xls(path = downloaded_file, sheet = "demographics")
+  ## Define dataset argument ----
+  dataset <- match.arg(dataset)
 
-  ## Read facilities
-  y <- readxl::read_xls(path = downloaded_file, sheet = "bgyfacilities")
+  ## Read the specified inventory ----
+  df <- readxl::read_xls(path = downloaded_file, sheet = dataset)
 
-  ## Read conflict
-  z <- readxl::read_xls(path = downloaded_file, sheet = "conflict")
-
-  ## Merge
-  xyz <- merge(merge(x, y), z)
-
-  ## Return xyz
-  xyz
+  ## Return df ----
+  df
 }
 
 
-################################################################################
-#
+#'
+#' @rdname marawi_get_armm
+#' @export
+#'
+
+marawi_get_armm_all <- function(tabular = TRUE) {
+  ## Google Drive deauthorisation ----
+  googledrive::drive_deauth()
+
+  ## Get ARMM Google Drive identifier ----
+  id <- get_drive_id(
+    pattern = "Masterlist",
+    drive_list = marawi_ls() |> marawi_ls_armm()
+  )
+
+  ## Create temp file ----
+  downloaded_file <- tempfile()
+
+  ## Download masterlist file ----
+  googledrive::drive_download(file = id, path = downloaded_file) |>
+    googledrive::with_drive_quiet()
+
+  ## Read each data sheet and merge ----
+  df <- Map(
+    f = readxl::read_xls,
+    path = downloaded_file,
+    sheet = list("demographics", "bgyfacilities", "conflict")
+  )
+
+  ## Should datasets be flattened into a single tibble? ----
+  if (tabular) {
+    df <- Reduce(dplyr::left_join, df)
+  }
+
+  ## Return df ----
+  df
+}
+
+
 #'
 #' Get Lanao del Sur Barangay level data masterlist from the Open Marawi Google
 #' Drive Database
 #'
-#' @param id Character value for the unique identifier for the Lanao del Sur
-#'   Open Marawi **Google Drive** Masterlist file in **.xlsx** format. Currently set
-#'   to the identifier specified when `marawi_ls_armm()` is called. Change this
-#'   if Open Marawi **Google Drive** is moved or if name of masterlist file
-#'   changes.
 #' @param dataset A string value from either `metadata`, `demographics`,
 #'   `facilities`, `establishment`, `mode_transport`, `conflict`,
 #'   `private_schools`, or `health` specifying the masterlist data to retrieve.
-#'   If not specified, will default to `metadata`
+#'   If not specified, will default to `metadata`.
+#' @param tabular Logical. Should output be flattened into a single data.frame?
+#'   Default is TRUE. If FALSE, output is a list of data.frames for each
+#'   sheet in the masterlist Excel file.
 #'
-#' @return A tibble of the specified masterlist dataset available in the
-#'   Lanao del Sur directory of the Open Marawi Database.
+#' @return A tibble or a list of tibbles of the specified masterlist dataset
+#'   available in the Lanao del Sur directory of the Open Marawi Database.
 #'
 #' @author Ernest Guevarra
 #'
@@ -212,112 +113,93 @@ marawi_get_armm_all <- function(id = marawi_ls_armm()$id[stringi::stri_detect(ma
 #' ## Retrieve the metadata dataset of the Lanao del Sur directory in the Open
 #' ## Marawi database
 #' marawi_get_lanao(dataset = "metadata")
+#' marawi_get_lanao_all()
 #'
-#' @rdname marawi_get
+#' @rdname marawi_get_lanao
 #' @export
 #'
-#'
-#
-################################################################################
 
-marawi_get_lanao <- function(id = marawi_ls_lanao()$id[stringi::stri_detect(marawi_ls_lanao()$name, fixed = "Masterlist_bgy")],
-                            dataset = c("metadata", "demographics",
-                                        "facilities", "establishment",
-                                        "mode_transport", "conflict",
-                                        "private_schools", "health")) {
-  ## Google Drive deauthorisation
+marawi_get_lanao <- function(dataset = c("metadata", "demographics",
+                                         "bgyfacilities", "estab",
+                                         "modetranspo", "conflict",
+                                         "privateschools", "health")) {
+  ## Google Drive deauthorisation ----
   googledrive::drive_deauth()
 
-  ## Create temp file
-  downloaded_file <- tempfile()
-
-  ## Download masterlist file
-  googledrive::drive_download(file = id, path = downloaded_file)
-
-  ## Define dataset argument
-  dataset <- match.arg(dataset)
-
-  sheet <- switch(
-    EXPR = dataset,
-    metadata = 1,
-    demographics = 2,
-    facilities = 3,
-    establishment = 4,
-    mode_transport = 5,
-    conflict = 6,
-    private_schools = 7,
-    health = 8
+  ## Get Lanao del Sur Google Drive identifier ----
+  id <- get_drive_id(
+    pattern = "Masterlist_bgy",
+    drive_list = marawi_ls() |> marawi_ls_lanao()
   )
 
-  ## Read the specified inventory
-  x <- readxl::read_xlsx(path = downloaded_file, sheet = sheet)
+  ## Create temp file ----
+  downloaded_file <- tempfile()
 
-  ## Return x
-  x
+  ## Download masterlist file ----
+  googledrive::drive_download(file = id, path = downloaded_file) |>
+    googledrive::with_drive_quiet()
+
+  ## Define dataset argument ----
+  dataset <- match.arg(dataset)
+
+  ## Read the specified inventory
+  df <- readxl::read_xlsx(path = downloaded_file, sheet = dataset)
+
+  ## Return df ----
+  df
 }
 
 
-################################################################################
-#
 #'
-#' @examples
-#' marawi_get_lanao_all()
-#'
-#' @rdname marawi_get
+#' @rdname marawi_get_lanao
 #' @export
 #'
-#
-################################################################################
 
-marawi_get_lanao_all <- function(id = marawi_ls_lanao()$id[stringi::stri_detect(marawi_ls_lanao()$name, fixed = "Masterlist_bgy")]) {
-  ## Google Drive deauthorisation
+marawi_get_lanao_all <- function(tabular = TRUE) {
+  ## Google Drive deauthorisation ----
   googledrive::drive_deauth()
 
-  ## Create temp file
-  downloaded_file <- tempfile()
-
-  ## Download masterlist file
-  googledrive::drive_download(file = id, path = downloaded_file)
-
-  ## Read demographics
-  x1 <- readxl::read_xlsx(path = downloaded_file, sheet = "demographics")
-
-  ## Read facilities
-  x2 <- readxl::read_xlsx(path = downloaded_file, sheet = "bgyfacilities")
-
-  ## Read establishment
-  x3 <- readxl::read_xlsx(path = downloaded_file, sheet = "estab")
-
-  ## Read mode transportation
-  x4 <- readxl::read_xlsx(path = downloaded_file, sheet = "modetranspo")
-
-  ## Read conflict
-  x5 <- readxl::read_xlsx(path = downloaded_file, sheet = "conflict")
-
-  ## Read private schools
-  x6 <- readxl::read_xlsx(path = downloaded_file, sheet = "privateschools")
-
-  ## Read health
-  x7 <- readxl::read_xlsx(path = downloaded_file, sheet = "health")
-
-  ## Merge
-  x <- merge(
-    merge(
-      merge(
-        merge(
-          merge(
-            merge(x1, x2),
-            x3
-          ),
-          x4
-        ),
-        x5
-      ),
-      x6,
-    ),
-    x7
+  ## Get Lanao del Sur Google Drive identifier ----
+  id <- get_drive_id(
+    pattern = "Masterlist_bgy",
+    drive_list = marawi_ls() |> marawi_ls_lanao()
   )
 
-  ## Return xyz
-  x
+  ## Create temp file ----
+  downloaded_file <- tempfile()
+
+  ## Download masterlist file ----
+  googledrive::drive_download(file = id, path = downloaded_file) |>
+    googledrive::with_drive_quiet()
+
+  ## Read each data sheet and merge ----
+  df <- Map(
+    f = readxl::read_xlsx,
+    path = downloaded_file,
+    sheet = list(
+      "demographics", "bgyfacilities", "estab", "modetranspo", "conflict",
+      "privateschools", "health"
+    )
+  )
+
+  ## Ensure that PSGC codes are character values ----
+  df <- df |>
+    lapply(
+      FUN = function(x) dplyr::mutate(
+        x,
+        dplyr::across(
+          .cols = dplyr::starts_with("PSGC"),
+          .fns = ~as.character(.x)
+        )
+      )
+    )
+
+  ## Should datasets be flattened into a single tibble? ----
+  if (tabular) {
+    df <- Reduce(dplyr::left_join, df) |>
+      suppressMessages()
+  }
+
+  ## Return df ----
+  df
 }
