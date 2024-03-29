@@ -37,7 +37,7 @@ Drive Database
 ## Retrieve the metadata dataset of the Lanao del Sur directory in the Open
 ## Marawi database
 marawi_get_marawi(dataset = "metadata")
-marawi_get_marawi_all()
+\dontrun{marawi_get_marawi_all()}
 
 }
 \author{

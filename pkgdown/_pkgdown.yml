@@ -55,9 +55,14 @@ reference:
   - title: Get maps data
     contents:
     - marawi_maps_ls
+    - marawi_maps_get
 
   - title: Utilities
     contents:
     - get_drive_id
+
+  - title: Supporting datasets
+    contents:
+    - marawi_maps_list
 
 
