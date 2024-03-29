@@ -1,0 +1,16 @@
+citHeader("To cite openmarawi in publications use:")
+
+citEntry(
+  entry    = "Manual",
+  title    = "openmarawi: An Interface to the Open Marawi Database",
+  author   = person("Ernest Guevarra"),
+  year     = "2024",
+  note     = "R package version 0.0.0.9000",
+  url      = "https://panukatan.io/openmarawi/",
+  textVersion = paste(
+    "Ernest Guevarra (2024).",
+    "openmarawi: An Interface to the Open Marawi Database",
+    "R package version 0.0.0.9000",
+    "URL https://panukatan.io/openmarawi/"
+  )
+)

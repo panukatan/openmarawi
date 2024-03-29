@@ -1,5 +1,3 @@
-################################################################################
-#
 #'
 #' An Interface to the Open Marawi Database
 #'
@@ -15,11 +13,11 @@
 #' @name openmarawi
 #' @docType package
 #' @keywords internal
-#' @importFrom googledrive drive_deauth drive_ls drive_get
+#' @importFrom googledrive drive_deauth drive_ls as_id is_dribble
 #' @importFrom googlesheets4 gs4_deauth read_sheet
+#' @importFrom dplyr filter pull
 #' @importFrom readxl read_xls
-#' @importFrom stringi stri_detect
+#' @importFrom stringr str_detect
+#' @importFrom rlang .data
 #'
-#
-################################################################################
 "_PACKAGE"
