@@ -4,6 +4,7 @@
 \alias{marawi_ls}
 \alias{marawi_ls_armm}
 \alias{marawi_ls_lanao}
+\alias{marawi_ls_marawi}
 \title{List files and folders within the Open Marawi Google Drive database}
 \usage{
 marawi_ls(id = "1bph1LBRpxwydAvjuggyjmhmq6HhyteY8")
@@ -11,6 +12,8 @@ marawi_ls(id = "1bph1LBRpxwydAvjuggyjmhmq6HhyteY8")
 marawi_ls_armm(drive_list)
 
 marawi_ls_lanao(drive_list)
+
+marawi_ls_marawi(drive_list)
 }
 \arguments{
 \item{id}{Character vector of the Open Marawi \strong{Google Drive} id. This is
