@@ -54,7 +54,7 @@ reference:
 
   - title: Get maps data
     contents:
-    - marawi_maps_get
+    - marawi_maps_ls
 
   - title: Utilities
     contents:
